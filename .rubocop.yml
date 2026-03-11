@@ -1,0 +1,62 @@
+
+AllCops:
+  DisplayCopNames: true
+  Exclude:
+    - 'bin/**'
+    #    - 'db/**'
+    #    - 'db/migrate/**'
+    - 'vendor/**/*'
+    - 'node_modules/**/*'
+    - 'tmp/**/*'
+  NewCops: enable
+  TargetRubyVersion: 3.4
+  TargetRailsVersion: 8
+#  SuggestExtensions: false
+
+Layout/LineLength:
+  Enabled: false
+
+Metrics/AbcSize:
+  Enabled: false
+
+Metrics/BlockLength:
+  Enabled: false
+
+Metrics/CyclomaticComplexity:
+  Enabled: false
+
+Metrics/ClassLength:
+  Enabled: false
+
+Metrics/MethodLength:
+  Enabled: false
+
+Metrics/PerceivedComplexity:
+  Enabled: false
+
+Rails:
+  Enabled: true
+
+plugins:
+  - rubocop-performance
+  - rubocop-rails
+  - rubocop-capybara
+  - rubocop-minitest
+
+Style/AsciiComments:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/IfUnlessModifier:
+  Enabled: false
+
+Rails/OutputSafety:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
