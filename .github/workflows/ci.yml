@@ -31,5 +31,5 @@ jobs:
 
       - run: |
           make lint
-          make test
-          make acceptance-test
+          make db-migrate
+          make test-full

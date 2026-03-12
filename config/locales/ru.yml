@@ -1,6 +1,29 @@
 ru:
 
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            password:
+              blank: Обязательное поле
+            password_confirmation:
+              confirmation: Пароли не совпадают
+              blank: Обязательное поле
+            email:
+              blank: Обязательное поле
+              taken: Уже занят
+
   app_title: BulletinBoard
   welcome: Добро пожаловать
   main_nav:
     dashboard: Главная страница
+
+  users:
+    new:
+      title: Новый пользователь
+      success: Пользователь создан!
+      label_password_placeholder: Минимум 6 символов
+      submit: Создать
+    show:
+      title: Профиль пользователя

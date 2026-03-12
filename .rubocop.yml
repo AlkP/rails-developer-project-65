@@ -3,7 +3,7 @@ AllCops:
   DisplayCopNames: true
   Exclude:
     - 'bin/**'
-    #    - 'db/**'
+    - 'db/**'
     #    - 'db/migrate/**'
     - 'vendor/**/*'
     - 'node_modules/**/*'

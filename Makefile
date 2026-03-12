@@ -30,6 +30,12 @@ acceptance-test: db-migrate db-test-prepare
 	@echo "🧪 Running acceptance tests..."
 	bundle exec rails test:system
 
+# Запуск всех тестов
+test-full: db-migrate db-test-prepare
+	@echo "🧪 Running acceptance tests..."
+	bundle exec rails test
+	bundle exec rails test:system
+
 # Запуск сервера разработки
 start:
 	@echo "🚀 Starting Rails server..."
