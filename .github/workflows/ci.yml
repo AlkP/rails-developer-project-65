@@ -32,3 +32,4 @@ jobs:
       - run: |
           make lint
           make test
+          make acceptance-test
