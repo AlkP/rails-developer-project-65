@@ -12,7 +12,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      session[:user_id] = @user.id
+      session[:auth_token] = @user.auth_token
       redirect_to root_path, notice: I18n.t('users.new.success')
     else
       render :new, status: :unprocessable_content

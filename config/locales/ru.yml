@@ -17,6 +17,9 @@ ru:
   app_title: BulletinBoard
   welcome: Добро пожаловать
   main_nav:
+    new_user: Зарегистрироваться
+    new_session: Войти
+    logout: Выход
     dashboard: Главная страница
 
   users:
@@ -27,3 +30,15 @@ ru:
       submit: Создать
     show:
       title: Профиль пользователя
+
+  sessions:
+    new:
+      title: Вход в систему
+      email_placeholder: email
+      password_placeholder: пароль
+      submit: Войти
+    create:
+      success: Вы успешно вошли в систему
+      unprocessable_content: Неверные email или пароль
+    destroy:
+      success: Вы вышли из системы

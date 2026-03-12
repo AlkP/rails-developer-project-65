@@ -9,4 +9,7 @@ bin/rails g controller users new create show index
 bin/rails g simple_form:install
 bin/rails g system_test
 
+bin/rails g controller sessions new create destroy
+bin/rails g system_test sessions
+
 ```

@@ -2,6 +2,9 @@ Rails.application.routes.draw do
   root 'dashboards#index'
 
   resources :users, only: %i[new create show index]
+  resources :sessions, only: %i[new create] do
+    delete :destroy, on: :collection
+  end
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

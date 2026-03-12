@@ -3,7 +3,9 @@
 one:
   email: one@email.ru
   password_digest: <%= BCrypt::Password.create('MyPassword') %>
+  auth_token: SecureRandom.hex(11)
 
 two:
   email: two@email.ru
   password_digest: <%= BCrypt::Password.create('MyPassword') %>
+  auth_token: SecureRandom.hex(12)
