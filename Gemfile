@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'dotenv-rails'
 gem 'pg'
+gem 'rollbar'
 gem 'simple_form'
 gem 'slim-rails'
 

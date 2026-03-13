@@ -1,4 +1,5 @@
 
+### старт
 ```bash
 rails new . -j esbuild --css=bootstrap
 bin/rails g controller dashboards
@@ -23,10 +24,12 @@ SECRET_KEY_BASE: сгенерировать
 RAILS_ENV: production
 ```
 Build Command:
-```angular2html
-bundle install; bundle exec rake assets:precompile; bundle exec rake assets:clean; bundle exec rails db:migrate; bundle exec rails db:seed;
-```
+```bundle install; bundle exec rake assets:precompile; bundle exec rake assets:clean; bundle exec rails db:migrate; bundle exec rails db:seed;```
+
 Start Command
-```angular2html
-bundle exec puma -t 2:2 -p ${PORT:-3000} -e production
-```
+```bundle exec puma -t 2:2 -p ${PORT:-3000} -e production```
+
+### Rollbar
+```bin/rails g rollbar```
+
+добавить в переменные render.com ROLLBAR_ACCESS_TOKEN из .env

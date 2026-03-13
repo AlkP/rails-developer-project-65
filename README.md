@@ -2,4 +2,4 @@
 
 ## Доска объявлений
 
-задеплоил на [render.com/rails-project-65](https://rails-developer-project-65-eopn.onrender.com) в течении месяца будет доступно.
+задеплоил на [render.com/rails-project-65](https://rails-developer-project-65-eopn.onrender.com) в течении месяца (до 13.04.26) будет доступно.
