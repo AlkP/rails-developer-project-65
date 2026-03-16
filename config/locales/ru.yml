@@ -6,6 +6,7 @@ ru:
         user:
           attributes:
             password:
+              too_short: Недостаточная длинна поля
               blank: Обязательное поле
             password_confirmation:
               confirmation: Пароли не совпадают
@@ -20,6 +21,7 @@ ru:
     new_user: Зарегистрироваться
     new_session: Войти
     logout: Выход
+    github: Войти через GitHub
     dashboard: Главная страница
 
   users:
@@ -30,8 +32,14 @@ ru:
       submit: Создать
     show:
       title: Профиль пользователя
+  web:
+    auth:
+      success: Успешный вход через GitHub!
+      alert: Ошибка аутентификации
+      user_alert: Ошибка при создании пользователя
 
   sessions:
+    alert: Требуется вход в систему
     new:
       title: Вход в систему
       email_placeholder: email

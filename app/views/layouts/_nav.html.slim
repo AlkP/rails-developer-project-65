@@ -13,14 +13,16 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light
 
       - if current_user
         span.text-secondary.me-4
-          = current_user.email
+          = current_user.provider_name || current_user.email
 
         a.navbar-brand[aria-current='page' href="#{sessions_path}" data-turbo-method='delete']
           = I18n.t('main_nav.logout')
       - else
         span.text-secondary.me-4
-          a.nav-link.active[aria-current='page' href="#{new_session_path}"]
-            = I18n.t('main_nav.new_session')
-        span.text-secondary.me-4
-          a.nav-link.active[aria-current='page' href="#{new_user_path}"]
-            = I18n.t('main_nav.new_user')
+          = button_to I18n.t('main_nav.github'), auth_request_path(:github), method: :post, data: { turbo: false }, class: 'nav-link active'
+        / span.text-secondary.me-4
+        /   a.nav-link.active[aria-current='page' href="#{new_session_path}"]
+        /     = I18n.t('main_nav.new_session')
+        / span.text-secondary.me-4
+        /   a.nav-link.active[aria-current='page' href="#{new_user_path}"]
+        /     = I18n.t('main_nav.new_user')

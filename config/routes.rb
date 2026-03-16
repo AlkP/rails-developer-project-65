@@ -8,4 +8,7 @@ Rails.application.routes.draw do
 
   get 'up' => 'rails/health#show', as: :rails_health_check
   get 'rollbar/test' if Rails.env.development?
+
+  post 'auth/:provider', to: 'auth#request', as: :auth_request
+  get 'auth/:provider/callback', to: 'web/auth#callback', as: :callback_auth
 end

@@ -1,0 +1,7 @@
+class CreateAuthentications < ActiveRecord::Migration[8.1]
+  def change
+    add_column :users, :provider_name, :string
+    add_column :users, :provider, :string
+    add_column :users, :uid, :string
+  end
+end

@@ -8,6 +8,9 @@
 #  email           :string           not null
 #  password_digest :string
 #  updated_at      :datetime         not null
+#  provider_name   :string
+#  provider        :string
+#  uid             :string
 #
 # Indexes
 #

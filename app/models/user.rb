@@ -8,6 +8,9 @@
 #  email           :string           not null
 #  password_digest :string
 #  updated_at      :datetime         not null
+#  provider_name   :string
+#  provider        :string
+#  uid             :string
 #
 # Indexes
 #
@@ -16,13 +19,20 @@
 #
 
 class User < ApplicationRecord
-  has_secure_password
+  has_secure_password validations: false
 
   validates :email, presence: true, uniqueness: true
   # validates :auth_token, presence: true, uniqueness: true
-  validates :password, length: { minimum: 6 }, if: -> { new_record? || !password.nil? }
+  validates :password, length: { minimum: 6 }, if: -> { provider.blank? && new_record? }
 
   before_create :generate_auth_token
+
+  def self.from_omniauth(auth)
+    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+      user.provider_name = auth.info.nickname
+      user.email = auth.info.email
+    end
+  end
 
   private
 

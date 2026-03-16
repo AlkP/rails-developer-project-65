@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 
 gem 'annotate'
 gem 'dotenv-rails'
+gem 'omniauth-github'
+gem 'omniauth-rails_csrf_protection'
 gem 'pg'
 gem 'rollbar'
 gem 'simple_form'

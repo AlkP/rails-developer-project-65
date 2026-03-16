@@ -39,3 +39,22 @@ Start Command
 bin/rails g annotate:install
 bin/rails db:migrate 
 ```
+
+### omniauth-github
+
+```bash
+bin/rails g controller Web::Auth request callback
+```
+GitHub → Settings → Developer settings → OAuth Apps → New OAuth App
+```angular2html
+Application name: "Мое Rails приложение"
+Homepage URL: http://localhost:3000
+Authorization callback URL: http://localhost:3000/auth/github/callback
+```
+Новые Client ID и Client Secret
+
+добавить в переменные render.com
+```angular2html
+GITHUB_CLIENT_ID
+GITHUB_CLIENT_SECRET
+```
