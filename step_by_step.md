@@ -33,3 +33,9 @@ Start Command
 ```bin/rails g rollbar```
 
 добавить в переменные render.com ROLLBAR_ACCESS_TOKEN из .env
+
+### Annotate
+```bash
+bin/rails g annotate:install
+bin/rails db:migrate 
+```

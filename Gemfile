@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'annotate'
 gem 'dotenv-rails'
 gem 'pg'
 gem 'rollbar'
