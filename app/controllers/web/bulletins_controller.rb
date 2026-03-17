@@ -1,5 +1,5 @@
 class Web::BulletinsController < ApplicationController
-  before_action :authenticate_user!, only: %i[new create]
+  # before_action :authenticate_user!, only: %i[new create]
 
   PER_PAGE = 8
 
@@ -16,10 +16,12 @@ class Web::BulletinsController < ApplicationController
 
   def new
     @bulletin = Bulletin.new
+    authorize @bulletin
   end
 
   def create
     @bulletin = current_user.bulletins.build(bulletin_params)
+    authorize @bulletin
 
     if @bulletin.save
       redirect_to root_path, notice: I18n.t('bulletins.create.info')

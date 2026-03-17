@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   include ActionController::HttpAuthentication::Token::ControllerMethods
   include Authentication
+  include Pundit::Authorization
 
   PER_PAGE = 12
 

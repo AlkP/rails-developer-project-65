@@ -66,3 +66,6 @@ bin/rails g model Bulletin title:string description:text category:references use
 bin/rails active_storage:install
 bin/rails db:migrate
 ```
+
+### Final
+```rails g pundit:install```
