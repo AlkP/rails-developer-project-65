@@ -1,0 +1,46 @@
+.container.mt-4
+  .row.justify-content-center
+    .col-md-8
+      .card
+        .card-header
+          h1.mb-0 Новое объявление
+        .card-body
+          = simple_form_for @bulletin, html: { class: 'needs-validation', novalidate: true } do |f|
+            = f.error_notification class: 'alert alert-danger'
+            = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
+
+            .mb-3
+              = f.input :title,
+                      label: 'Название',
+                      wrapper: false,
+                      input_html: { class: 'form-control' },
+                      label_html: { class: 'form-label' }
+
+            .mb-3
+              = f.input :description,
+                      as: :text,
+                      label: 'Описание',
+                      wrapper: false,
+                      input_html: { rows: 5, class: 'form-control' },
+                      label_html: { class: 'form-label' }
+
+            .mb-3
+              = f.association :category,
+                      label: 'Категория',
+                      wrapper: false,
+                      input_html: { class: 'form-select' },
+                      label_html: { class: 'form-label' },
+                      prompt: '-- Выберите категорию --'
+
+            .mb-3
+              = f.input :image,
+                      as: :file,
+                      label: 'Изображение',
+                      wrapper: false,
+                      input_html: { accept: 'image/png,image/jpg,image/jpeg', class: 'form-control' },
+                      label_html: { class: 'form-label' },
+                      hint: 'Максимальный размер: 5 МБ. Форматы: PNG, JPG, JPEG'
+
+            .d-flex.justify-content-between
+              = f.button :submit, 'Создать объявление', class: 'btn btn-primary'
+              = link_to 'Отмена', root_path, class: 'btn btn-secondary'

@@ -1,7 +1,10 @@
 source 'https://rubygems.org'
 
+gem 'active_storage_validations'
 gem 'annotate'
+gem 'benchmark', '~> 0.4.0'
 gem 'dotenv-rails'
+gem 'mini_magick', '~> 4.0'
 gem 'omniauth-github'
 gem 'omniauth-rails_csrf_protection'
 gem 'pg'

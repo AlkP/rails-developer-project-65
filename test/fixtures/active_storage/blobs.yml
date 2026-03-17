@@ -1,0 +1,8 @@
+test_image_blob:
+  key: test-image.jpg
+  filename: test.jpg
+  content_type: image/jpeg
+  metadata: {"identified":true}
+  service_name: local
+  byte_size: 1024
+  checksum: <%= Digest::MD5.base64digest(File.read(Rails.root.join('test/fixtures/files/test.jpg'))) %>

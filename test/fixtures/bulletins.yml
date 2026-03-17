@@ -1,0 +1,35 @@
+# == Schema Information
+#
+# Table name: bulletins
+#
+#  id          :integer          not null, primary key
+#  title       :string
+#  description :text
+#  category_id :integer          not null
+#  user_id     :integer          not null
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#
+# Indexes
+#
+#  index_bulletins_on_category_id  (category_id)
+#  index_bulletins_on_user_id      (user_id)
+#
+
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+<% 3.times do |i| %>
+  bulletin_<%= i %>:
+    title: "Объявление <%= i %>"
+    description: "Описание объявления <%= i %>"
+    category: transport
+    user: one
+    created_at: <%= Time.current - i.days %>
+<% end %>
+
+with_image:
+  title: "Объявление с картинкой"
+  description: "У этого объявления есть изображение"
+  category: realty
+  user: two
+  created_at: <%= Time.current %>

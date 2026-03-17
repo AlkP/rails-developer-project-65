@@ -58,3 +58,11 @@ Authorization callback URL: http://localhost:3000/auth/github/callback
 GITHUB_CLIENT_ID
 GITHUB_CLIENT_SECRET
 ```
+
+### Category + Bulletin
+```bash
+bin/rails g model Category name:string:index
+bin/rails g model Bulletin title:string description:text category:references user:references
+bin/rails active_storage:install
+bin/rails db:migrate
+```

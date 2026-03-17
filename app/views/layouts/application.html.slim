@@ -15,7 +15,7 @@ html
     = stylesheet_link_tag 'application', 'data-turbo-track': 'reload'
     = javascript_include_tag 'application', 'data-turbo-track': 'reload', type: 'module'
 
+  = render 'layouts/nav'
   body
-    = render 'layouts/nav'
     = render 'layouts/notice'
     = yield

@@ -10,6 +10,9 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light
         li.nav-item
           a.nav-link.active[aria-current='page' href="#{root_path}"]
             = I18n.t('main_nav.dashboard')
+        - if current_user
+          li.nav-item
+            = link_to I18n.t('bulletins.new.link'), new_bulletin_path, class: 'nav-link active'
 
       - if current_user
         span.text-secondary.me-4
@@ -19,7 +22,9 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light
           = I18n.t('main_nav.logout')
       - else
         span.text-secondary.me-4
-          = button_to I18n.t('main_nav.github'), auth_request_path(:github), method: :post, data: { turbo: false }, class: 'nav-link active'
+          = button_to auth_request_path(:github), method: :post, data: { turbo: false }, class: 'nav-link navbar-brand' do
+            i.bi.bi-github.me-1
+            = I18n.t('main_nav.github')
         / span.text-secondary.me-4
         /   a.nav-link.active[aria-current='page' href="#{new_session_path}"]
         /     = I18n.t('main_nav.new_session')

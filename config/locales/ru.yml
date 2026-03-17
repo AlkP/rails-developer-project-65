@@ -1,5 +1,30 @@
 ru:
 
+  time:
+    formats:
+      default: "%d %B %Y, %H:%M"
+      long: "%d %B %Y %H:%M"
+      short: "%d %b %H:%M"
+
+  date:
+    abbr_month_names:
+      [~, янв, фев, мар, апр, май, июн, июл, авг, сен, окт, ноя, дек]
+    month_names:
+      [
+        ~,
+        января,
+        февраля,
+        марта,
+        апреля,
+        мая,
+        июня,
+        июля,
+        августа,
+        сентября,
+        октября,
+        ноября,
+        декабря
+      ]
   activerecord:
     errors:
       models:
@@ -21,8 +46,8 @@ ru:
     new_user: Зарегистрироваться
     new_session: Войти
     logout: Выход
-    github: Войти через GitHub
-    dashboard: Главная страница
+    github: Вход
+    dashboard: Главная
 
   users:
     new:
@@ -32,6 +57,18 @@ ru:
       submit: Создать
     show:
       title: Профиль пользователя
+
+  bulletins:
+    index:
+      title: Объявления
+      no_content: По вашему запросу ничего не найдено
+      search: Поиск объявлений...
+      no_image: Нет изображения
+    new:
+      link: Добавить
+    create:
+      info: Объявление успешно создано
+
   web:
     auth:
       success: Успешный вход через GitHub!

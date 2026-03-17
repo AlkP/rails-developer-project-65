@@ -9,6 +9,6 @@ class UsersTest < ApplicationSystemTestCase
     fill_in 'Password confirmation', with: 'MyPassword'
     click_on I18n.t('users.new.submit')
 
-    assert_selector 'h1', text: I18n.t('welcome')
+    assert_selector 'h1', text: I18n.t('bulletins.index.title')
   end
 end

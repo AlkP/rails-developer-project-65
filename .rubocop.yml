@@ -60,3 +60,6 @@ Rails/OutputSafety:
 
 Style/FrozenStringLiteralComment:
   Enabled: false
+
+Rails/UniqueValidationWithoutIndex:
+  Enabled: false

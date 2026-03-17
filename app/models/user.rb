@@ -21,6 +21,8 @@
 class User < ApplicationRecord
   has_secure_password validations: false
 
+  has_many :bulletins, dependent: :destroy
+
   validates :email, presence: true, uniqueness: true
   # validates :auth_token, presence: true, uniqueness: true
   validates :password, length: { minimum: 6 }, if: -> { provider.blank? && new_record? }
