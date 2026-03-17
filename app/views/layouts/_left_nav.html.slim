@@ -1,5 +1,5 @@
 
 .d-flex.flex-column
-  a.btn.mb-2 href="#{admin_bulletins_path}" class="#{active?('BulletinsController')}" = t('admin.bulletins.index.buttons.moderation')
-  a.btn.mb-2 href="#{admin_index_path}" class="#{active?('AdminController')}" = t('admin.bulletins.index.buttons.all')
-  a.btn.mb-2 href="#{admin_categories_path}" class="#{active?('CategoriesController')}" = t('admin.bulletins.index.buttons.categories')
+  a.btn.mb-2 href="#{admin_bulletins_path}" class="#{class_of('BulletinsController')}" = t('admin.bulletins.index.buttons.moderation')
+  a.btn.mb-2 href="#{admin_index_path}" class="#{class_of('AdminController')}" = t('admin.bulletins.index.buttons.all')
+  a.btn.mb-2 href="#{admin_categories_path}" class="#{class_of('CategoriesController')}" = t('admin.bulletins.index.buttons.categories')

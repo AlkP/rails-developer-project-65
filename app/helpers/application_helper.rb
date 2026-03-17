@@ -1,9 +1,9 @@
 module ApplicationHelper
   def admin?
-    controller.class.name.start_with?('Admin::') || controller.class.name.eql?('AdminController')
+    controller.class.name.start_with?('Admin::') || controller.instance_of?(::AdminController)
   end
 
-  def active?(name)
+  def class_of(name)
     controller.class.name.end_with?(name) ? 'btn-primary active' : 'btn-outline-secondary'
   end
 end

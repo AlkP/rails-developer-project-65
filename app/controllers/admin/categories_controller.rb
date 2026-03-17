@@ -10,33 +10,32 @@ class Admin::CategoriesController < ApplicationController
     @category = Category.new
   end
 
+  def edit; end
+
   def create
     @category = Category.new(category_params)
 
     if @category.save
-      redirect_to admin_categories_path, notice: 'Категория создана'
+      redirect_to admin_categories_path, notice: t('admin.categories.messages.created')
     else
-      render :new, status: :unprocessable_entity
+      render :new, status: :unprocessable_content
     end
   end
 
-  def edit; end
-
   def update
-    p 'sa'
     if @category.update(category_params)
-      redirect_to admin_categories_path, notice: 'Категория обновлена'
+      redirect_to admin_categories_path, notice: t('admin.categories.messages.updated')
     else
-      render :edit, status: :unprocessable_entity
+      render :edit, status: :unprocessable_content
     end
   end
 
   def destroy
     if @category.bulletins.exists?
-      redirect_to admin_categories_path, alert: 'Нельзя удалить категорию с объявлениями'
+      redirect_to admin_categories_path, alert: t('admin.categories.messages.cannot_delete', count: @category.bulletins.count)
     else
       @category.destroy
-      redirect_to admin_categories_path, notice: 'Категория удалена'
+      redirect_to admin_categories_path, notice: t('admin.categories.messages.destroyed')
     end
   end
 
@@ -47,6 +46,6 @@ class Admin::CategoriesController < ApplicationController
   end
 
   def category_params
-    params.require(:category).permit(:name)
+    params.expect(category: [:name])
   end
 end
