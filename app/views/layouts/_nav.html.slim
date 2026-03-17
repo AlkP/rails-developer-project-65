@@ -15,6 +15,9 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light
             = link_to I18n.t('bulletins.new.link'), new_bulletin_path, class: 'nav-link active'
 
       - if current_user
+        a.navbar-brand[aria-current='page' href="#{admin_bulletins_path}"]
+          = I18n.t('main_nav.admin')
+
         span.text-secondary.me-4
           = current_user.provider_name || current_user.email
 

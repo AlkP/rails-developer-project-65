@@ -1,0 +1,37 @@
+
+h3 = t('admin.bulletins.index.title')
+.mb-4
+  = form_with url: admin_index_path,
+          method: :get,
+          class: 'row g-3 align-items-center' do |f|
+    .col-auto.flex-grow-1
+      = f.search_field :q,
+              value: params[:q],
+              class: 'form-control form-control-lg',
+              placeholder: I18n.t('bulletins.index.search')
+    .col-auto
+      = f.submit 'Найти', class: 'btn btn-primary btn-lg'
+      - if params[:q].present?
+        = link_to 'Сбросить', admin_index_path, class: 'btn btn-outline-secondary btn-lg ms-2'
+= will_paginate @bulletins, class: 'pagination'
+
+table.table.table-striped.table-bordered
+  thead.bg-primary.text-white
+    tr
+      th = t('admin.bulletins.index.table.title')
+      th = t('admin.bulletins.index.table.state')
+      th = t('admin.bulletins.index.table.created_at')
+      th = t('admin.bulletins.index.table.actions')
+
+  tbody
+    - @bulletins.each do |bulletin|
+      tr
+        td = link_to bulletin.title, bulletin_path(bulletin)
+        td
+        td = t('admin.bulletins.index.time_ago', time: time_ago_in_words(bulletin.created_at))
+        td
+          .d-flex.gap-2
+            = button_to t('admin.bulletins.index.actions.archive'),
+                    archive_admin_bulletin_path(bulletin),
+                    method: :patch,
+                    class: 'nav-link text-danger'

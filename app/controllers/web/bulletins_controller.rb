@@ -1,11 +1,13 @@
 class Web::BulletinsController < ApplicationController
   before_action :authenticate_user!, only: %i[new create]
 
-  def index
-    @bulletins = Bulletin.ordered.limit(8)
-    return if params[:q].blank?
+  PER_PAGE = 8
 
-    @bulletins = @bulletins.search(params[:q])
+  def index
+    bulletins = Bulletin.ordered
+    bulletins = bulletins.search(params[:q]) if params[:q].present?
+
+    @bulletins = bulletins.paginate(page: params[:page], per_page: PER_PAGE)
   end
 
   def show

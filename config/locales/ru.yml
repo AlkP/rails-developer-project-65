@@ -1,30 +1,91 @@
 ru:
 
+  datetime:
+    distance_in_words:
+      half_a_minute: "полминуты"
+      less_than_x_seconds:
+        one: "меньше %{count} секунды"
+        few: "меньше %{count} секунд"
+        many: "меньше %{count} секунд"
+        other: "меньше %{count} секунды"
+      x_seconds:
+        one: "%{count} секунду"
+        few: "%{count} секунды"
+        many: "%{count} секунд"
+        other: "%{count} секунды"
+      less_than_x_minutes:
+        one: "меньше минуты"
+        few: "меньше %{count} минут"
+        many: "меньше %{count} минут"
+        other: "меньше %{count} минуты"
+      x_minutes:
+        one: "%{count} минуту"
+        few: "%{count} минуты"
+        many: "%{count} минут"
+        other: "%{count} минуты"
+      about_x_hours:
+        one: "около %{count} часа"
+        few: "около %{count} часов"
+        many: "около %{count} часов"
+        other: "около %{count} часа"
+      x_hours:
+        one: "%{count} час"
+        few: "%{count} часа"
+        many: "%{count} часов"
+        other: "%{count} часа"
+      x_days:
+        one: "%{count} день"
+        few: "%{count} дня"
+        many: "%{count} дней"
+        other: "%{count} дня"
+      about_x_months:
+        one: "около %{count} месяца"
+        few: "около %{count} месяцев"
+        many: "около %{count} месяцев"
+        other: "около %{count} месяца"
+      x_months:
+        one: "%{count} месяц"
+        few: "%{count} месяца"
+        many: "%{count} месяцев"
+        other: "%{count} месяца"
+      about_x_years:
+        one: "около %{count} года"
+        few: "около %{count} лет"
+        many: "около %{count} лет"
+        other: "около %{count} года"
+      over_x_years:
+        one: "более %{count} года"
+        few: "более %{count} лет"
+        many: "более %{count} лет"
+        other: "более %{count} года"
+      almost_x_years:
+        one: "почти %{count} год"
+        few: "почти %{count} года"
+        many: "почти %{count} лет"
+        other: "почти %{count} года"
+
   time:
     formats:
       default: "%d %B %Y, %H:%M"
       long: "%d %B %Y %H:%M"
       short: "%d %b %H:%M"
+    am: "утра"
+    pm: "вечера"
 
   date:
-    abbr_month_names:
-      [~, янв, фев, мар, апр, май, июн, июл, авг, сен, окт, ноя, дек]
+    formats:
+      default: "%d.%m.%Y"
+      long: "%d %B %Y"
+      short: "%d %b"
     month_names:
-      [
-        ~,
-        января,
-        февраля,
-        марта,
-        апреля,
-        мая,
-        июня,
-        июля,
-        августа,
-        сентября,
-        октября,
-        ноября,
-        декабря
-      ]
+      [ ~, января, февраля, марта, апреля, мая, июня, июля, августа, сентября, октября, ноября, декабря ]
+    abbr_month_names:
+      [ ~, янв, фев, мар, апр, май, июн, июл, авг, сен, окт, ноя, дек ]
+    day_names:
+      [ воскресенье, понедельник, вторник, среда, четверг, пятница, суббота ]
+    abbr_day_names:
+      [ Вс, Пн, Вт, Ср, Чт, Пт, Сб ]
+
   activerecord:
     errors:
       models:
@@ -47,7 +108,60 @@ ru:
     new_session: Войти
     logout: Выход
     github: Вход
+    admin: Админка
     dashboard: Главная
+
+  admin:
+    categories:
+      form:
+        name_placeholder: Введите название категории
+        submit: Сохранить
+        cancel: Отмена
+      edit:
+        title: "Редактирование категории: %{name}"
+      new:
+        title: Новая категория
+      index:
+        title: Управление категориями
+        table:
+          title: Название
+          created_at: Дата создания
+          actions: Действия
+        actions:
+          edit: Редактировать
+          destroy: Удалить
+
+    bulletins:
+      new:
+        create: Добавить категорию
+      index:
+        title: Объявления на модерации
+        table:
+          title: Название
+          created_at: Дата создания
+          state: Состояние
+          actions: Действия
+        buttons:
+          moderation: Объявления на модерации
+          all: Все объявления
+          categories: Все категории
+        actions:
+          publish: Опубликовать
+          reject: Вернуть
+          archive: В архив
+        time_ago: "%{time} назад"
+
+  helpers:
+    page_entries_info:
+      one_page:
+        display_entries:
+          zero: Объявления не найдены
+          one: "Показано <b>1</b> объявление"
+          few: "Показано <b>%{count}</b> объявления"
+          many: "Показано <b>%{count}</b> объявлений"
+          other: "Показано <b>%{count}</b> объявлений"
+      more_pages:
+        display_entries: "Показано <b>%{first}&nbsp;-&nbsp;%{last}</b> из <b>%{total}</b> объявлений"
 
   users:
     new:
@@ -62,7 +176,7 @@ ru:
     index:
       title: Объявления
       no_content: По вашему запросу ничего не найдено
-      search: Поиск объявлений...
+      search: По названию/описанию
       no_image: Нет изображения
     new:
       link: Добавить

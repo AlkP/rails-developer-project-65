@@ -11,6 +11,9 @@ gem 'pg'
 gem 'rollbar'
 gem 'simple_form'
 gem 'slim-rails'
+gem 'will_paginate'
+gem 'will_paginate-bootstrap-style'
+# gem 'kaminari'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem 'rails', '~> 8.1.2'

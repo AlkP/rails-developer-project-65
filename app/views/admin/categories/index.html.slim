@@ -1,0 +1,25 @@
+
+h3 = t('admin.bulletins.index.title')
+
+= link_to t('admin.bulletins.new.create'), new_admin_category_path
+
+= will_paginate @categories, class: 'pagination'
+
+table.table.table-striped.table-bordered
+  thead.bg-primary.text-white
+    tr
+      th = t('admin.categories.index.table.title')
+      th = t('admin.categories.index.table.created_at')
+      th = t('admin.categories.index.table.actions')
+
+  tbody
+    - @categories.each do |category|
+      tr
+        td = link_to category.name, edit_admin_category_path(category)
+        td = t('admin.bulletins.index.time_ago', time: time_ago_in_words(category.created_at))
+        td
+          .d-flex.gap-2
+            = button_to t('admin.categories.index.actions.destroy'),
+              admin_category_path(category),
+              method: :delete,
+              class: 'nav-link text-danger'

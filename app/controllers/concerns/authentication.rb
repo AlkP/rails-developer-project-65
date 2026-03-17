@@ -15,6 +15,13 @@ module Authentication
     redirect_to root_path, alert: I18n.t('sessions.alert')
   end
 
+  def authenticate_admin!
+    return if user_signed_in?
+    return if current_user.admin?
+
+    redirect_to root_path, alert: I18n.t('sessions.alert')
+  end
+
   def user_signed_in?
     current_user.present?
   end

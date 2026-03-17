@@ -13,12 +13,20 @@ Rails.application.routes.draw do
     root 'bulletins#index'
 
     resources :bulletins, only: %i[index new create show]
-
-    # # Остальные ресурсы в скоупе web
-    # resource :auth, only: [] do
-    #   get :callback
-    # end
   end
+
+  namespace :admin do
+    resources :bulletins, only: %i[index] do
+      member do
+        patch :publish
+        patch :reject
+        patch :archive
+      end
+    end
+    resources :categories
+  end
+
+  resources :admin, only: [:index]
 
   post 'auth/:provider', to: 'auth#request', as: :auth_request
   get 'auth/:provider/callback', to: 'web/auth#callback', as: :callback_auth

@@ -18,4 +18,13 @@ html
   = render 'layouts/nav'
   body
     = render 'layouts/notice'
+
+  - if admin?
+    .container.py-5
+      .row
+        .col-md-3
+          = render 'layouts/left_nav'
+        .col-md-9
+          = yield
+  - else
     = yield

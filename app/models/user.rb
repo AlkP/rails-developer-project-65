@@ -3,14 +3,15 @@
 # Table name: users
 #
 #  id              :integer          not null, primary key
-#  auth_token      :string
-#  created_at      :datetime         not null
 #  email           :string           not null
 #  password_digest :string
+#  created_at      :datetime         not null
 #  updated_at      :datetime         not null
+#  auth_token      :string
 #  provider_name   :string
 #  provider        :string
 #  uid             :string
+#  admin           :boolean          default(FALSE), not null
 #
 # Indexes
 #
@@ -27,7 +28,7 @@ class User < ApplicationRecord
   # validates :auth_token, presence: true, uniqueness: true
   validates :password, length: { minimum: 6 }, if: -> { provider.blank? && new_record? }
 
-  before_create :generate_auth_token
+  before_create :generate_auth_token, :set_admin
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
@@ -45,5 +46,9 @@ class User < ApplicationRecord
 
       break random_token
     end
+  end
+
+  def set_admin
+    self.admin = true
   end
 end

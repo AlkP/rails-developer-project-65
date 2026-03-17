@@ -1,9 +1,10 @@
 
 .container.py-5x
+  hr
   .row
-    h1 = I18n.t('bulletins.index.title')
-    hr
-    .mb-4
+    .col-4
+      h1 = I18n.t('bulletins.index.title')
+    .col-8
       = form_with url: bulletins_path,
               method: :get,
               class: 'row g-3 align-items-center' do |f|
@@ -16,12 +17,13 @@
           = f.submit 'Найти', class: 'btn btn-primary btn-lg'
           - if params[:q].present?
             = link_to 'Сбросить', bulletins_path, class: 'btn btn-outline-secondary btn-lg ms-2'
-    hr
 
-    / Результаты поиска
-    .row
-      - if @bulletins.any?
-        = render @bulletins
-      - else
-        .col-12.text-center.py-5
-          p.lead.text-muted = I18n.t('bulletins.index.no_content')
+  hr
+  = will_paginate @betins, class: 'pagination'
+
+  .row
+    - if @bulletins.any?
+      = render @bulletins
+    - else
+      .col-12.text-center.py-5
+        p.lead.text-muted ull= I18n.t('bulletins.index.no_content')
