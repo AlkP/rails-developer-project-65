@@ -26,7 +26,9 @@ Rails.application.routes.draw do
     resources :categories
   end
 
-  resources :admin, only: [:index]
+  resources :admin, only: [:index] do
+    patch :archive, on: :member
+  end
 
   post 'auth/:provider', to: 'auth#request', as: :auth_request
   get 'auth/:provider/callback', to: 'web/auth#callback', as: :callback_auth

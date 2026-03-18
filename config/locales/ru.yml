@@ -141,9 +141,16 @@ ru:
           other: "Нельзя удалить категорию, так как она содержит %{count} объявлений"
 
     bulletins:
+      states:
+        draft: черновик
+        under_moderation: на модерации
+        published: опубликовано
+        rejected: отклонено
+        archived: в архиве
       new:
         create: Добавить категорию
       index:
+        title_short: Объявления
         title: Объявления на модерации
         table:
           title: Название

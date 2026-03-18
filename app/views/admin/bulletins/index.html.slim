@@ -17,15 +17,18 @@ table.table.table-striped.table-bordered
         td = t('admin.bulletins.index.time_ago', time: time_ago_in_words(bulletin.created_at))
         td
           .d-flex.gap-2
-            = button_to t('admin.bulletins.index.actions.publish'),
-                    publish_admin_bulletin_path(bulletin),
-                    method: :patch,
-                    class: 'nav-link'
-            = button_to t('admin.bulletins.index.actions.reject'),
-                    reject_admin_bulletin_path(bulletin),
-                    method: :patch,
-                    class: 'nav-link'
-            = button_to t('admin.bulletins.index.actions.archive'),
-                    archive_admin_bulletin_path(bulletin),
-                    method: :patch,
-                    class: 'nav-link text-danger'
+            - if bulletin.may_publish?
+              = button_to t('admin.bulletins.index.actions.publish'),
+                      publish_admin_bulletin_path(bulletin),
+                      method: :patch,
+                      class: 'nav-link'
+            - if bulletin.may_reject?
+              = button_to t('admin.bulletins.index.actions.reject'),
+                      reject_admin_bulletin_path(bulletin),
+                      method: :patch,
+                      class: 'nav-link'
+            - if bulletin.may_archive?
+              = button_to t('admin.bulletins.index.actions.archive'),
+                      archive_admin_bulletin_path(bulletin),
+                      method: :patch,
+                      class: 'nav-link text-danger'

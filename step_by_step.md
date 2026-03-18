@@ -67,5 +67,10 @@ bin/rails active_storage:install
 bin/rails db:migrate
 ```
 
-### Final
+### pundit
 ```rails g pundit:install```
+
+### AASM
+```bash
+bin/rails g aasm bulletin state
+```

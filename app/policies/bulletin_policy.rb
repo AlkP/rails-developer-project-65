@@ -3,6 +3,9 @@ class BulletinPolicy < ApplicationPolicy
     user.admin?
   end
 
-  alias_method :create?, :index?
-  alias_method :new?, :index?
+  alias create? index?
+  alias new? index?
+  alias publish? index?
+  alias reject? index?
+  alias archive? index?
 end

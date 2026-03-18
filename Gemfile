@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'aasm'
 gem 'active_storage_validations'
 gem 'annotate'
 gem 'benchmark', '~> 0.4.0'
