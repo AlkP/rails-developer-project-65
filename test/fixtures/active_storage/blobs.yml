@@ -5,4 +5,4 @@ test_image_blob:
   metadata: {"identified":true}
   service_name: local
   byte_size: 1024
-  checksum: <%= Digest::MD5.base64digest(File.read(Rails.root.join('test/fixtures/files/test.jpg'))) %>
+  checksum: <%= Digest::MD5.base64digest(File.read(Rails.root.join('test/fixtures/files/test0.jpg'))) %>

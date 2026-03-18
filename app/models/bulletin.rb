@@ -78,7 +78,7 @@ class Bulletin < ApplicationRecord
     temp_file = Tempfile.new(['fallback', '.jpg'])
     temp_file.binmode
 
-    Rails.root.join('test/fixtures/files/test.jpg').open('rb') do |source|
+    Rails.root.join('test/fixtures/files/test0.jpg').open('rb') do |source|
       temp_file.write(source.read)
     end
 
