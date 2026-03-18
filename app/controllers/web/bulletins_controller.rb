@@ -4,19 +4,13 @@ class Web::BulletinsController < ApplicationController
   PER_PAGE = 8
 
   def index
-    bulletins = Bulletin.ordered
-    bulletins = bulletins.search(params[:q]) if params[:q].present?
+    bulletins = Bulletin.published.search(params[:q]).ordered
 
     @bulletins = bulletins.paginate(page: params[:page], per_page: PER_PAGE)
   end
 
   def show
     @bulletin = Bulletin.find(params[:id])
-  end
-
-  def new
-    @bulletin = Bulletin.new
-    authorize @bulletin
   end
 
   def create
@@ -28,11 +22,5 @@ class Web::BulletinsController < ApplicationController
     else
       render :new, status: :unprocessable_content
     end
-  end
-
-  private
-
-  def bulletin_params
-    params.expect(bulletin: %i[title description category_id image])
   end
 end

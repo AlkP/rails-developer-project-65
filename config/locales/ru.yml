@@ -110,6 +110,25 @@ ru:
     github: Вход
     admin: Админка
     dashboard: Главная
+    profile: Мои объявления
+
+  profile:
+    edit:
+      title: Редактировать объявление
+      buttons:
+        submit: Сохранить объявление
+    index:
+      title: Мои объявления
+      table:
+        title: Название
+        state: Состояние
+        created_at: Дата создания
+        actions: Действия
+      actions:
+        show: Показать
+        edit: Редактировать
+        to_moderate: На модерацию
+        archive: В архив
 
   admin:
     categories:
@@ -141,6 +160,7 @@ ru:
           other: "Нельзя удалить категорию, так как она содержит %{count} объявлений"
 
     bulletins:
+      all_states: Все состояния
       states:
         draft: черновик
         under_moderation: на модерации
@@ -190,12 +210,36 @@ ru:
 
   bulletins:
     index:
+      search_button: Найти
+      reset: Сбросить
       title: Объявления
       no_content: По вашему запросу ничего не найдено
-      search: По названию/описанию
+      search: Поиск по названию/описанию
       no_image: Нет изображения
+    bulletin:
+      no_image: Нет фото
     new:
       link: Добавить
+      title: Новое объявление
+      labels:
+        title: Название
+        description: Описание
+        category: Категория
+        image: Изображение
+      prompts:
+        category: -- Выберите категорию --
+      hints:
+        image: 'Максимальный размер: 5 МБ. Форматы: PNG, JPG, JPEG'
+      buttons:
+        submit: Создать объявление
+        cancel: Отмена
+      errors:
+        title: заголовок
+        description: описание
+        image: изображение
+        category: категория
+    update:
+      info: Объявление успешно обновлено
     create:
       info: Объявление успешно создано
 

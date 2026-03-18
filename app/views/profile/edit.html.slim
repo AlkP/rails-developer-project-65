@@ -1,0 +1,53 @@
+.container.mt-4
+  .row.justify-content-center
+    .col-md-8
+      .card
+        .card-header
+          h1.mb-0 = t('profile.edit.title')
+        .card-body
+          = simple_form_for @bulletin, url: profile_path(@bulletin), html: { class: 'needs-validation', novalidate: true, method: :patch } do |f|
+            = f.error_notification class: 'alert alert-danger'
+            = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
+
+            .mb-3
+              = f.input :title,
+                      label: t('bulletins.new.labels.title'),
+                      wrapper: false,
+                      input_html: { class: 'form-control' },
+                      label_html: { class: 'form-label' }
+
+            .mb-3
+              = f.input :description,
+                      as: :text,
+                      label: t('bulletins.new.labels.description'),
+                      wrapper: false,
+                      input_html: { rows: 5, class: 'form-control' },
+                      label_html: { class: 'form-label' }
+
+            .mb-3
+              = f.association :category,
+                      label: t('bulletins.new.labels.category'),
+                      wrapper: false,
+                      input_html: { class: 'form-select' },
+                      label_html: { class: 'form-label' },
+                      prompt: t('bulletins.new.prompts.category')
+
+            - if @bulletin.image.attached?
+              .mb-3
+                = image_tag @bulletin.thumbnail, class: 'img-thumbnail mb-2', style: 'max-height: 200px;'
+                .form-check
+                  = check_box_tag :remove_image, '1', false, class: 'form-check-input'
+                  = label_tag :remove_image, t('bulletins.new.remove_image'), class: 'form-check-label'
+
+            .mb-3
+              = f.input :image,
+                      as: :file,
+                      label: t('bulletins.new.labels.image'),
+                      wrapper: false,
+                      input_html: { accept: 'image/png,image/jpg,image/jpeg', class: 'form-control' },
+                      label_html: { class: 'form-label' },
+                      hint: t('bulletins.new.hints.image')
+
+            .d-flex.justify-content-between
+              = f.button :submit, t('profile.edit.buttons.submit'), class: 'btn btn-primary'
+              = link_to t('bulletins.new.buttons.cancel'), profile_index_path, class: 'btn btn-secondary'

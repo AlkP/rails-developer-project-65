@@ -12,7 +12,9 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light
             = I18n.t('main_nav.dashboard')
         - if current_user
           li.nav-item
-            = link_to I18n.t('bulletins.new.link'), new_bulletin_path, class: 'nav-link active'
+            = link_to I18n.t('main_nav.profile'), profile_index_path, class: 'nav-link active'
+          li.nav-item
+            = link_to I18n.t('bulletins.new.link'), new_profile_path, class: 'nav-link active'
 
       - if current_user
         a.navbar-brand[aria-current='page' href="#{admin_bulletins_path}"]

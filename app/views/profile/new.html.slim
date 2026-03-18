@@ -3,15 +3,15 @@
     .col-md-8
       .card
         .card-header
-          h1.mb-0 Новое объявление
+          h1.mb-0 = t('bulletins.new.title')
         .card-body
-          = simple_form_for @bulletin, html: { class: 'needs-validation', novalidate: true } do |f|
+          = simple_form_for @bulletin, url: profile_index_path, html: { class: 'needs-validation', novalidate: true } do |f|
             = f.error_notification class: 'alert alert-danger'
             = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
 
             .mb-3
               = f.input :title,
-                      label: 'Название',
+                      label: t('bulletins.new.labels.title'),
                       wrapper: false,
                       input_html: { class: 'form-control' },
                       label_html: { class: 'form-label' }
@@ -19,28 +19,28 @@
             .mb-3
               = f.input :description,
                       as: :text,
-                      label: 'Описание',
+                      label: t('bulletins.new.labels.description'),
                       wrapper: false,
                       input_html: { rows: 5, class: 'form-control' },
                       label_html: { class: 'form-label' }
 
             .mb-3
               = f.association :category,
-                      label: 'Категория',
+                      label: t('bulletins.new.labels.category'),
                       wrapper: false,
                       input_html: { class: 'form-select' },
                       label_html: { class: 'form-label' },
-                      prompt: '-- Выберите категорию --'
+                      prompt: t('bulletins.new.prompts.category')
 
             .mb-3
               = f.input :image,
                       as: :file,
-                      label: 'Изображение',
+                      label: t('bulletins.new.labels.image'),
                       wrapper: false,
                       input_html: { accept: 'image/png,image/jpg,image/jpeg', class: 'form-control' },
                       label_html: { class: 'form-label' },
-                      hint: 'Максимальный размер: 5 МБ. Форматы: PNG, JPG, JPEG'
+                      hint: t('bulletins.new.hints.image')
 
             .d-flex.justify-content-between
-              = f.button :submit, 'Создать объявление', class: 'btn btn-primary'
-              = link_to 'Отмена', root_path, class: 'btn btn-secondary'
+              = f.button :submit, t('bulletins.new.buttons.submit'), class: 'btn btn-primary'
+              = link_to t('bulletins.new.buttons.cancel'), root_path, class: 'btn btn-secondary'

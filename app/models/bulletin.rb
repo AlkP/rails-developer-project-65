@@ -57,10 +57,13 @@ class Bulletin < ApplicationRecord
   # validates :image, attached: true, content_type: %w[image/png image/jpg image/jpeg], size: { less_than: 5.megabytes }
 
   scope :search, lambda { |search|
+    return if search.blank?
+
     where('LOWER(title) LIKE :q OR LOWER(description) LIKE :q', q: "%#{search}%")
   }
 
-  scope :by_state, ->(state) { where(state: state) }
+  scope :by_state, ->(state) { where(state: state) if state.present? }
+  scope :by_user_id, ->(user_id) { where(user_id: user_id) if user_id.present? }
 
   def thumbnail
     image.variant(resize_to_fill: [200, 200]).processed
@@ -94,6 +97,6 @@ class Bulletin < ApplicationRecord
   end
 
   def set_state
-    self.state = 'draft' if self.state.nil?
+    self.state = 'draft' if state.nil?
   end
 end

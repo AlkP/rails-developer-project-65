@@ -10,7 +10,7 @@
           title Placeholder
           rect width="100%" height="100%" fill="#55595c"
           text x="50%" y="50%" fill="#eceeef" dy=".3em" text-anchor="middle"
-            | Нет фото
+            = I18n.t('bulletins.bulletin.no_image')
 
     .card-body.d-flex.flex-column
       = link_to bulletin.title, bulletin_path(bulletin), class: ''

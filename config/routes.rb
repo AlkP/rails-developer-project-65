@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   scope module: 'web' do
     root 'bulletins#index'
 
-    resources :bulletins, only: %i[index new create show]
+    resources :bulletins, only: %i[index show]
   end
 
   namespace :admin do
@@ -24,6 +24,13 @@ Rails.application.routes.draw do
       end
     end
     resources :categories
+  end
+
+  resources :profile, only: %i[index new create edit update] do
+    member do
+      patch :to_moderate
+      patch :archive
+    end
   end
 
   resources :admin, only: [:index] do

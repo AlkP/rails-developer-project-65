@@ -1,29 +1,27 @@
 
-.container.py-5x
-  hr
-  .row
-    .col-4
-      h1 = I18n.t('bulletins.index.title')
-    .col-8
-      = form_with url: bulletins_path,
-              method: :get,
-              class: 'row g-3 align-items-center' do |f|
-        .col-auto.flex-grow-1
-          = f.search_field :q,
-                  value: params[:q],
-                  class: 'form-control form-control-lg',
-                  placeholder: I18n.t('bulletins.index.search')
-        .col-auto
-          = f.submit 'Найти', class: 'btn btn-primary btn-lg'
-          - if params[:q].present?
-            = link_to 'Сбросить', bulletins_path, class: 'btn btn-outline-secondary btn-lg ms-2'
+.row
+  .col-4
+    h1 = t('bulletins.index.title')
+  .col-8
+    = form_with url: bulletins_path,
+            method: :get,
+            class: 'row g-3 align-items-center' do |f|
+      .col-auto.flex-grow-1
+        = f.search_field :q,
+                value: params[:q],
+                class: 'form-control form-control-lg',
+                placeholder: t('bulletins.index.search')
+      .col-auto
+        = f.submit t('bulletins.index.search_button'), class: 'btn btn-primary btn-lg'
+        - if params[:q].present?
+          = link_to t('bulletins.index.reset'), bulletins_path, class: 'btn btn-outline-secondary btn-lg ms-2'
 
-  hr
-  = will_paginate @betins, class: 'pagination'
+hr
+= will_paginate @bulletins, class: 'pagination justify-content-center'
 
-  .row
-    - if @bulletins.any?
-      = render @bulletins
-    - else
-      .col-12.text-center.py-5
-        p.lead.text-muted ull= I18n.t('bulletins.index.no_content')
+.row
+  - if @bulletins.any?
+    = render @bulletins
+  - else
+    .col-12.text-center.py-5
+      p.lead.text-muted = t('bulletins.index.no_content')

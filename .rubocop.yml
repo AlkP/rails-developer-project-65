@@ -63,3 +63,6 @@ Style/FrozenStringLiteralComment:
 
 Rails/UniqueValidationWithoutIndex:
   Enabled: false
+
+Rails/SkipsModelValidations:
+  Enabled: false

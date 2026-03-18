@@ -3,11 +3,10 @@ class Admin::BulletinsController < ApplicationController
   before_action :set_bulletin, only: %i[publish reject archive]
 
   def index
-    bulletins = Bulletin.under_moderation.ordered
-    bulletins = bulletins.search(params[:q]) if params[:q].present?
+    bulletins = Bulletin.under_moderation.search(params[:q]).ordered
+    authorize bulletins
 
     @bulletins = bulletins.paginate(page: params[:page], per_page: PER_PAGE)
-    authorize @bulletins
   end
 
   def publish

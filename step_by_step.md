@@ -74,3 +74,7 @@ bin/rails db:migrate
 ```bash
 bin/rails g aasm bulletin state
 ```
+
+```bash
+bin/rails g controller Profile
+```

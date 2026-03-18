@@ -1,0 +1,57 @@
+
+h3 = t('profile.index.title')
+
+= link_to I18n.t('bulletins.new.title'), new_profile_path
+
+= will_paginate @bulletins, class: 'pagination'
+
+.mb-4
+  = form_with url: profile_index_path,
+          method: :get,
+          class: 'row g-3 align-items-center' do |f|
+    .col-auto.flex-grow-1
+      = f.search_field :q,
+              value: params[:q],
+              class: 'form-control form-control-lg',
+              placeholder: I18n.t('bulletins.index.search')
+    .col-auto
+      = f.select :state,
+              Bulletin.aasm.states.map { |state| [I18n.t("admin.bulletins.states.#{state}"), state] },
+              { include_blank: I18n.t('admin.bulletins.all_states'), selected: params[:state] },
+              class: 'form-select form-select-lg'
+
+    .col-auto
+      = f.submit 'Найти', class: 'btn btn-primary btn-lg'
+      - if params[:q].present?
+        = link_to 'Сбросить', profile_index_path, class: 'btn btn-outline-secondary btn-lg ms-2'
+
+table.table.table-striped.table-bordered
+  thead.bg-primary.text-white
+    tr
+      th = t('profile.index.table.title')
+      th = t('profile.index.table.state')
+      th = t('profile.index.table.created_at')
+      th = t('profile.index.table.actions')
+
+  tbody
+    - @bulletins.each do |bulletin|
+      tr
+        td = bulletin.title
+        td = t("admin.bulletins.states.#{bulletin.state}", time: time_ago_in_words(bulletin.created_at))
+        td = t('admin.bulletins.index.time_ago', time: time_ago_in_words(bulletin.created_at))
+        td
+          .d-flex.gap-2
+            = link_to t('profile.index.actions.show'), bulletin_path(bulletin), class: 'nav-link'
+            edit
+            - if bulletin.draft?
+              = link_to t('profile.index.actions.edit'), edit_profile_path(bulletin), class: 'nav-link'
+            - if bulletin.may_to_moderate?
+              = button_to t('profile.index.actions.to_moderate'),
+                      to_moderate_profile_path(bulletin),
+                      method: :patch,
+                      class: 'nav-link'
+            - if bulletin.may_archive?
+              = button_to t('profile.index.actions.archive'),
+                      archive_profile_path(bulletin),
+                      method: :patch,
+                      class: 'nav-link text-danger'

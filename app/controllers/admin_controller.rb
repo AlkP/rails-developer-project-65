@@ -3,10 +3,9 @@ class AdminController < ApplicationController
   before_action :set_bulletin, only: %i[archive]
 
   def index
-    @bulletins = Bulletin.ordered
+    @bulletins = Bulletin.search(params[:q]).by_state(params[:state]).ordered
     authorize @bulletins
 
-    @bulletins = @bulletins.search(params[:q]) if params[:q].present?
     @bulletins = @bulletins.paginate(page: params[:page], per_page: PER_PAGE)
   end
 
