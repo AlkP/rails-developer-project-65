@@ -18,7 +18,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '25'
+          node-version: '20'
           cache: 'npm'
 
       - name: Install npm dependencies
@@ -30,6 +30,8 @@ jobs:
           bundler-cache: true
 
       - run: |
-          make lint
-          make db-migrate
-          make test-full
+          bundle exec rubocop
+          bundle exec rails db:migrate
+          bundle exec rails db:test:prepare
+          bundle exec rails test
+          bundle exec rails test:system
