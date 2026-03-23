@@ -1,6 +1,6 @@
 module ApplicationHelper
   def admin?
-    controller.class.name.start_with?('Admin::') || controller.instance_of?(::AdminController)
+    controller.class.name.start_with?('Web::Admin::') || controller.instance_of?(::AdminController)
   end
 
   def class_of(name)

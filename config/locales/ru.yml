@@ -89,6 +89,14 @@ ru:
   activerecord:
     errors:
       models:
+        bulletin:
+          attributes:
+            category:
+              required: Обязательное поле
+            description:
+              blank: Обязательное поле
+            title:
+              blank: Обязательное поле
         user:
           attributes:
             password:
@@ -118,6 +126,7 @@ ru:
       buttons:
         submit: Сохранить объявление
     index:
+      confirm_archive: Вы уверены?
       title: Мои объявления
       table:
         title: Название

@@ -1,9 +1,9 @@
-class Admin::CategoriesController < ApplicationController
+class Web::Admin::CategoriesController < ApplicationController
   # before_action :authenticate_admin!
   before_action :set_category, only: %i[edit update destroy]
 
   def index
-    @categories = Category.ordered.paginate(page: params[:page], per_page: PER_PAGE)
+    @categories = Category.ordered.search(params[:q]).paginate(page: params[:page], per_page: PER_PAGE)
     authorize @categories
   end
 

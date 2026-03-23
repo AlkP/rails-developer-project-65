@@ -1,9 +1,13 @@
 class BulletinPolicy < ApplicationPolicy
   def index?
+    return false unless user
+
     user.admin?
   end
 
   def edit?
+    return false unless user
+
     user.admin? && user.id == record.user_id
   end
 

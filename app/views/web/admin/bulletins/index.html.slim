@@ -21,14 +21,17 @@ table.table.table-striped.table-bordered
               = button_to t('admin.bulletins.index.actions.publish'),
                       publish_admin_bulletin_path(bulletin),
                       method: :patch,
-                      class: 'nav-link'
+                      class: 'nav-link',
+                      data: { turbo_confirm: t('profile.index.confirm_archive') }
             - if bulletin.may_reject?
               = button_to t('admin.bulletins.index.actions.reject'),
                       reject_admin_bulletin_path(bulletin),
                       method: :patch,
-                      class: 'nav-link'
+                      class: 'nav-link',
+                      data: { turbo_confirm: t('profile.index.confirm_archive') }
             - if bulletin.may_archive?
               = button_to t('admin.bulletins.index.actions.archive'),
                       archive_admin_bulletin_path(bulletin),
                       method: :patch,
-                      class: 'nav-link text-danger'
+                      class: 'nav-link text-danger',
+                      data: { turbo_confirm: t('profile.index.confirm_archive') }

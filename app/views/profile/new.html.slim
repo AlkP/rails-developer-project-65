@@ -5,41 +5,35 @@
         .card-header
           h1.mb-0 = t('bulletins.new.title')
         .card-body
-          = simple_form_for @bulletin, url: profile_index_path, html: { class: 'needs-validation', novalidate: true } do |f|
+          = simple_form_for @bulletin, url: profile_index_path do |f|
             = f.error_notification class: 'alert alert-danger'
-            = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
 
-            .mb-3
+            .mb-3 class=('has-error' if @bulletin.errors[:title].any?)
               = f.input :title,
                       label: t('bulletins.new.labels.title'),
-                      wrapper: false,
-                      input_html: { class: 'form-control' },
-                      label_html: { class: 'form-label' }
+                      input_html: { class: "form-control #{'is-invalid' if @bulletin.errors[:title].any?}" }
 
-            .mb-3
+            .mb-3 class=('has-error' if @bulletin.errors[:description].any?)
               = f.input :description,
                       as: :text,
                       label: t('bulletins.new.labels.description'),
-                      wrapper: false,
-                      input_html: { rows: 5, class: 'form-control' },
-                      label_html: { class: 'form-label' }
+                      input_html: { rows: 5, class: "form-control #{'is-invalid' if @bulletin.errors[:description].any?}" }
 
-            .mb-3
+            .mb-3 class=('has-error' if @bulletin.errors[:category].any?)
               = f.association :category,
                       label: t('bulletins.new.labels.category'),
-                      wrapper: false,
-                      input_html: { class: 'form-select' },
-                      label_html: { class: 'form-label' },
+                      input_html: { class: "form-select #{'is-invalid' if @bulletin.errors[:category].any?}" },
                       prompt: t('bulletins.new.prompts.category')
 
-            .mb-3
+            .mb-3 class=('has-error' if @bulletin.errors[:image].any?)
               = f.input :image,
                       as: :file,
                       label: t('bulletins.new.labels.image'),
-                      wrapper: false,
-                      input_html: { accept: 'image/png,image/jpg,image/jpeg', class: 'form-control' },
-                      label_html: { class: 'form-label' },
+                      input_html: { accept: 'image/png,image/jpg,image/jpeg', class: "form-control #{'is-invalid' if @bulletin.errors[:image].any?}" },
                       hint: t('bulletins.new.hints.image')
+              - if @bulletin.errors[:image].any?
+                .invalid-feedback.d-block
+                  = @bulletin.errors[:image].join(', ')
 
             .d-flex.justify-content-between
               = f.button :submit, t('bulletins.new.buttons.submit'), class: 'btn btn-primary'

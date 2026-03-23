@@ -13,17 +13,17 @@ Rails.application.routes.draw do
     root 'bulletins#index'
 
     resources :bulletins, only: %i[index show]
-  end
 
-  namespace :admin do
-    resources :bulletins, only: %i[index] do
-      member do
-        patch :publish
-        patch :reject
-        patch :archive
+    namespace :admin do
+      resources :bulletins, only: %i[index] do
+        member do
+          patch :publish
+          patch :reject
+          patch :archive
+        end
       end
+      resources :categories
     end
-    resources :categories
   end
 
   resources :profile, only: %i[index new create edit update] do
@@ -39,4 +39,7 @@ Rails.application.routes.draw do
 
   post 'auth/:provider', to: 'auth#request', as: :auth_request
   get 'auth/:provider/callback', to: 'web/auth#callback', as: :callback_auth
+
+  # дичь для тестов хекслета
+  get 'profile/new_bulletin', to: 'profile#new', as: :new_bulletin
 end

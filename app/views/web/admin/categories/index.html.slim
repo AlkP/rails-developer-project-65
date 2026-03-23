@@ -1,6 +1,21 @@
 
 h3 = t('admin.bulletins.index.title')
 
+.mb-4
+  = form_with url: admin_categories_path,
+          method: :get,
+          class: 'row g-3 align-items-center' do |f|
+    .col-auto.flex-grow-1
+      = f.search_field :q,
+              value: params[:q],
+              class: 'form-control form-control-lg',
+              placeholder: I18n.t('bulletins.index.search')
+
+    .col-auto
+      = f.submit 'Найти', class: 'btn btn-primary btn-lg'
+      - if params[:q].present?
+        = link_to 'Сбросить', admin_categories_path, class: 'btn btn-outline-secondary btn-lg ms-2'
+
 = link_to t('admin.bulletins.new.create'), new_admin_category_path
 
 = will_paginate @categories, class: 'pagination'
@@ -22,4 +37,5 @@ table.table.table-striped.table-bordered
             = button_to t('admin.categories.index.actions.destroy'),
               admin_category_path(category),
               method: :delete,
-              class: 'nav-link text-danger'
+              class: 'nav-link text-danger',
+              data: { turbo_confirm: t('profile.index.confirm_archive') }

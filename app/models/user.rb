@@ -11,7 +11,8 @@
 #  provider_name   :string
 #  provider        :string
 #  uid             :string
-#  admin           :boolean          default(FALSE), not null
+#  name            :string
+#  admin           :boolean          default(TRUE), not null
 #
 # Indexes
 #

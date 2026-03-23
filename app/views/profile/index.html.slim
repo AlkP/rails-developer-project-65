@@ -54,4 +54,5 @@ table.table.table-striped.table-bordered
               = button_to t('profile.index.actions.archive'),
                       archive_profile_path(bulletin),
                       method: :patch,
-                      class: 'nav-link text-danger'
+                      class: 'nav-link text-danger',
+                      data: { turbo_confirm: t('profile.index.confirm_archive') }

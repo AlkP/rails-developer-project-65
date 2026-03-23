@@ -1,4 +1,4 @@
-class Admin::BulletinsController < ApplicationController
+class Web::Admin::BulletinsController < ApplicationController
   # before_action :authenticate_admin!
   before_action :set_bulletin, only: %i[publish reject archive]
 

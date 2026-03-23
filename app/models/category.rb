@@ -16,4 +16,10 @@ class Category < ApplicationRecord
   has_many :bulletins, dependent: :restrict_with_exception
 
   validates :name, presence: true, uniqueness: true
+
+  scope :search, lambda { |search|
+    return if search.blank?
+
+    where('LOWER(name) LIKE :q', q: "%#{search}%")
+  }
 end

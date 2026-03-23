@@ -1,5 +1,7 @@
 class CategoryPolicy < ApplicationPolicy
   def index?
+    return false unless user
+
     user.admin?
   end
 
